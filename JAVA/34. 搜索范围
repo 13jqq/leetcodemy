@@ -1,0 +1,39 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+    	int[] res = {-1,-1};
+    	if( nums == null || nums.length == 0){
+    		return res;
+    	}
+    	
+        int len = nums.length;
+        int st = 0 ; 
+        int ed=  nums.length  - 1;
+        
+        while( st < ed){
+        	int mid = st + (ed - st)/2;
+        	if( nums[mid] < target){
+        		st = mid + 1;
+        	}else{
+        		ed = mid;
+        	}
+        }
+        
+        if( nums[st] != target){
+        	return res;
+        }
+        res[0] = st;
+        ed = nums.length - 1;
+        while(st < ed){
+        	int mid = st + (ed - st)/2 +1;
+        	if( nums[mid] > target){
+        		ed = mid  - 1;
+        	}else{
+        		st=  mid;
+        	}
+        }
+        res[1] = ed;
+        return res;
+        
+    }
+
+}
