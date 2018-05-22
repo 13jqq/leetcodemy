@@ -1,0 +1,37 @@
+class Solution {
+     public int search(int[] nums, int target) {
+         if( nums== null || nums.length == 0){
+	    		 return -1;
+	    	 }
+	         int st = 0 ; 
+	          int ed = nums.length - 1;
+	         while( st < ed){
+	        	 
+	        	 int mid = st + ( ed - st)/2;
+	        	 int tmp;
+	        	 if(target < nums[0] == nums[mid] < nums[0]){
+	        		 tmp = 	nums[mid];
+	        	 }else{
+	        		 if( target < nums[0] ){
+	        			 tmp = Integer.MIN_VALUE;
+	        		 }else{
+	        			 tmp = Integer.MAX_VALUE;
+	        		 }
+	        	 }
+	        	 
+	        	 if( tmp < target){
+	        		 st = mid + 1;
+	        	 }else if( tmp > target){
+	        		 ed = mid ;
+	        	 }else{
+	        		 return mid;
+	        	 }
+	         }
+	         
+	         if( nums[st] == target){
+	        	 return st;
+	         }else{
+	        	return -1;
+	         }
+	     }
+}
