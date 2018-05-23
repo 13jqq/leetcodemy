@@ -1,0 +1,25 @@
+class Solution {
+    public static int lengthOfLongestSubstring(String s) {
+	if( s.length() == 0 || s == null  ){
+		return 0;
+	}
+	if( s.length() == 1){
+		return 1;
+	}
+     int[] mymap = new int[255];
+     for( int i = 0; i < 255 ;  i++){
+    	 mymap[i] = -1;
+     
+     }
+     int i = -1;
+     int len =  0 ; 
+     int tmp ;
+     for( int j = 0 ; j < s.length() ; j ++){
+    	 tmp = mymap[s.charAt(j)];
+    	 i = Math.max(i, tmp);
+    	 mymap[s.charAt(j)] = j;
+    	 len = Math.max(len, j - i);
+     }
+     return len;
+}
+}
